@@ -1,0 +1,12 @@
+parm complex.prmtop
+
+parmstrip :WAT
+parmstrip :Cl-
+parmstrip :Na+
+parmstrip :PA,PC,OL
+
+
+
+parmwrite out complex.prmtop
+run
+quit

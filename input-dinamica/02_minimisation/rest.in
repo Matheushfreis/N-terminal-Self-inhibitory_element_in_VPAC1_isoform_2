@@ -1,0 +1,17 @@
+#minimise ptn with positional restraints
+
+&cntrl
+  imin=1,                       ! Perform an energy minimization	
+  maxcyc=2000,                  ! Maximum number of cycles for minimization
+  ncyc=1000,                    ! Switch from steepest descent to conjugate gradient minimization after ncyc cycles
+  ntmin=1,                      ! Method of minimization (sd followed by the cg)
+  cut=10.0,                     ! Nonbonded cutoff in Angstroms
+  ntb=1,                        ! Constant volume
+  ntc=1,                        ! No SHAKE
+  ntf=1,                        ! Complete force evaluation
+  ntpr=100,                     ! Print to mdout every ntpr steps
+  ioutfm = 1,                   ! Write a binary (netcdf) trajectory
+  ntr=1,                        ! Restrain atoms using a harmonic potential
+  restraintmask=':1-370&!@H=',  ! Choose residues
+  restraint_wt=5.0              ! Force constant (kcal/(mol Angstroms^2))
+/

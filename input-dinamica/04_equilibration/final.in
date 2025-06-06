@@ -1,0 +1,8 @@
+parm ../01_topology/complex.prmtop
+trajin  equi_wr.rst7
+
+autoimage
+strip :WAT
+trajout equi.pdb
+run
+quit

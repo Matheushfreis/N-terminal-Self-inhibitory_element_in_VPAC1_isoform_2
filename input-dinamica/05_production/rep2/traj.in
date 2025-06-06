@@ -1,0 +1,33 @@
+parm ../../01_topology/complex.prmtop
+trajin  prod_1.nc
+trajin  prod_2.nc
+trajin  prod_3.nc
+trajin  prod_4.nc
+trajin  prod_5.nc
+trajin  prod_6.nc
+trajin  prod_7.nc
+trajin  prod_8.nc
+trajin  prod_9.nc
+trajin  prod_10.nc
+trajin  prod_11.nc
+trajin  prod_12.nc
+trajin  prod_13.nc
+trajin  prod_14.nc
+trajin  prod_15.nc
+trajin  prod_16.nc
+trajin  prod_17.nc
+trajin  prod_18.nc
+trajin  prod_19.nc
+trajin  prod_20.nc
+
+
+autoimage
+strip :WAT
+strip :Cl-
+strip :Na+
+strip :PA,PC,OL
+
+rms ToFirst :1-294&!@H= first out rmsd_prot_pac1_iso1_rep1.agr mass
+trajout traj_pac1_iso1_rep1.xtc
+run
+quit

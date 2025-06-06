@@ -1,0 +1,35 @@
+equilibrate ptn
+ &cntrl
+  imin = 0,             ! Molecular dynamics
+  irest = 1,            ! Restart calculation
+  ntx = 5,              ! Positions and velocities read formatted
+  nstlim = 250000,      ! Number of MD steps
+  dt=0.002,             ! Timestep (ps)
+  ntc = 2,              ! SHAKE on for bonds with hydrogen
+  ntf = 2,              ! No force evaluation for bonds with hydrogen
+  tol = 1.0e-8, 
+  jfastw = 0,
+  cut = 10.0,           ! Nonbonded cutoff (Angstroms)
+  nsnb = 25,
+  ntpr = 1000,          ! Print to mdout every ntpr steps
+  ntwx = 1000,          ! Write a restart file every ntwr steps
+  ntwr = 5000,          ! Write a restart file every ntwr steps
+  ntb = 2,              ! Constant pressure periodic boundary conditions
+  ntp = 3,              ! md with semiisotropic pressure scaling
+  csurften = 3,         ! Constant surface tension with interfaces in the xy plane
+  pres0 = 1.01325, 
+  taup = 1.0,
+  ntt = 3, 
+  gamma_ln = 2.0, 
+  temp0 = 310.0,        ! Simulation temperature (K)
+  iwrap = 1, 
+  ioutfm = 1, 
+  ig = -1,              ! Random seed for Langevin thermostat
+  ntr = 1, 
+  restraintmask=':1-370 & !@H',
+  restraint_wt = 0.25
+  nmropt = 0
+/
+&ewald
+skinnb = 2.0, order = 4, vdwmeth = 1, netfrc = 1, dsum_tol = 1.0e-6
+/

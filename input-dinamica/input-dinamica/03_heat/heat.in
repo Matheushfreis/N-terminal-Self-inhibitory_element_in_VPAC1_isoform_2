@@ -1,0 +1,38 @@
+#heat ptn - NVT
+&cntrl
+ imin = 0, 			! Choose a molecular dynamics (MD) run [no minimization]
+ irest = 0, 		! No restart calculation
+ ntx = 1,			! Positions read formatted with no initial velocities
+ nstlim = 500000, 	! Number of MD steps in run (nstlim * dt = run length in ps)
+ dt=0.002,			! Time step in picoseconds (ps). The time length of each MD step
+ ntc = 2, 			! Enable SHAKE to constrain all bonds involving hydrogen
+ ntf = 2, 			! Setting to not calculate force for SHAKE constrained bonds
+ tol = 1.0e-8, 		! SHAKE tolerance
+ jfastw = 0,		! Normal operation
+ cut = 10.0, 		! Nonbonded cutoff in Angstroms
+ nsnb = 25,			! Determines the frequency of nonbonded list updates (default)
+ ntpr = 1000, 		! Print to mdout every ntpr steps
+ ntwx = 1000,		! Write to trajectory file every ntwx steps
+ ntwr = 1000,		! Write a restart file every ntwr steps
+ ntb = 1, 			! Periodic boundaries for constant volume
+ ntt = 3, 			! Temperature control with Langevin thermostat
+ gamma_ln = 0.067, 	! Langevin thermostat collision frequency
+ tempi = 20.0, 		! Assign velocities at specified temperature (K)
+ temp0 = 310.0, 	! Reference temperature at which the system is to be kept (K)
+ ig = -1,			! Randomize the seed for the pseudo-random number generator
+ iwrap = 1, 		! Coordinates written to the restart and trajectory files will be "wrapped" into a primary box
+ ioutfm = 1,		! Write a binary (netcdf) trajectory
+ ntr = 1, 			! Restrain atoms using a harmonic potential
+ restraintmask=':PA,PC,OL & :1-370 & !@H',    	! Choose residues
+ restraint_wt = 10.0, 							! Force constant (kcal/(mol Angstroms^2))
+ nmropt = 1			!NMR restraints and weight changes read (See TEMP0 control below)
+ /
+&wt type='TEMP0', istep1=0, istep2=50000, value1=0.0, value2=100.0 /
+&wt type='TEMP0', istep1=50001, istep2=100000, value1=100.0, value2=200.0 /
+&wt type='TEMP0', istep1=100001, istep2=150000, value1=200.0, value2=250.0 /
+&wt type='TEMP0', istep1=150001, istep2=200000, value1=250.0, value2=310.0 /
+&wt type='TEMP0', istep1=200001, istep2=500000, value1=310.0, value2=310.0 /
+&wt type='END' /
+&ewald
+skinnb = 2.0, order = 4, vdwmeth = 1, netfrc = 1, dsum_tol = 1.0e-6
+/

@@ -1,0 +1,27 @@
+parm ../01_topology/complex.prmtop
+
+trajin  equi_10_memb.nc
+trajin  equi_5.0_memb.nc
+trajin  equi_2.5_memb.nc
+trajin  equi_1.0_memb.nc
+trajin  equi_0.5_memb.nc
+trajin  equi_0.25_memb.nc
+trajin  equi_0.1_memb.nc
+trajin  equi_0.05_memb.nc
+
+trajin  equi_10_protein.nc
+trajin  equi_5.0_protein.nc
+trajin  equi_2.5_protein.nc
+trajin  equi_1.0_protein.nc
+trajin  equi_0.5_protein.nc
+trajin  equi_0.25_protein.nc
+trajin  equi_0.1_protein.nc
+trajin  equi_0.05_protein.nc
+
+trajin  equi_wr.nc
+
+autoimage
+trajout equil.dcd
+
+run
+quit

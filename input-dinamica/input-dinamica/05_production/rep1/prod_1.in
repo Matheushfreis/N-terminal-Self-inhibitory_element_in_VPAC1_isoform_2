@@ -1,0 +1,32 @@
+production run
+
+&cntrl
+ imin = 0,             ! Choose a molecular dynamics (MD) run [no minimization]
+ irest = 1,            ! No restart calculation
+ ntx = 5,              ! Read coordinates and velocities from unformatted rst7 coordinate file
+ nstlim = 5000000,     ! Number of MD steps in run (nstlim * dt = run length in ps)
+ dt=0.002,             ! Time step in picoseconds (ps). The time length of each MD step
+ ntc = 2,              ! Enable SHAKE to constrain all bonds involving hydrogen
+ ntf = 2,              ! Setting to not calculate force for SHAKE constrained bonds 
+ tol = 1.0e-8,         ! SHAKE tolerance
+ jfastw = 0,           ! Normal operation
+ cut = 10.0,           ! Nonbonded cutoff in Angstroms
+ nsnb = 25,            ! Determines the frequency of nonbonded list updates (default)
+ ntpr = 10000,         ! Print to mdout every ntpr steps
+ ntwx = 10000,         ! Write to trajectory file every ntwx steps 
+ ntwr = 10000,         ! Write a restart file every ntwr steps
+ ntb = 2,              ! Constant pressure periodic boundary conditions
+ ntp = 3,              ! Semiisotropic pressure scaling
+ csurften = 3,         ! Constant surface tension with interfaces in the xy plane
+ pres0 = 1.01325,      ! Reference pressure (in units of bars)
+ taup = 1.0,           ! Pressure relaxation time (ps)
+ ntt = 3,              ! Temperature control with Langevin thermostat
+ gamma_ln = 2.0,       ! Langevin thermostat collision frequency
+ temp0 = 310.0,        ! Reference temperature at which the system is to be kept (K)
+ iwrap = 1,            ! Coordinates written to the restart and trajectory files will be "wrapped" into a primary box
+ ioutfm = 1,           ! Write a binary (netcdf) trajectory
+ ig = -1,              ! Randomize the seed for the pseudo-random number generator
+/
+&ewald
+skinnb = 2.0, order = 4, vdwmeth = 1, netfrc = 1, dsum_tol = 1.0e-6
+/

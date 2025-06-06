@@ -1,0 +1,16 @@
+#minimise ptn
+
+&cntrl
+  imin=1,			! Perform an energy minimization	
+  maxcyc=5000,		! Maximum number of cycles for minimization
+  ncyc=2500,		! Switch from steepest descent to conjugate gradient minimization after ncyc cycles
+  ntmin=1,			! Method of minimization (sd followed by the cg)
+  cut=10.0,			! Nonbonded cutoff in Angstroms
+  ntb=1,			! Periodic boundaries for constant volume
+  ntc=1, 			! No SHAKE
+  ntf=1,			! Complete force evaluation
+  ntpr=100,			! Print to mdout every ntpr steps
+  ntr=0,			! NO restrain atoms using a harmonic potential
+/
+
+

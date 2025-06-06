@@ -1,0 +1,26 @@
+source leaprc.protein.ff19SB
+source leaprc.gaff
+source leaprc.water.opc
+source leaprc.lipid21
+
+
+PROT 	= loadpdb 	PROT.pdb
+MEMB 	= loadpdb 	MEMB.pdb
+IONS	= loadpdb	IONS.pdb
+WAT		= loadpdb	WAT.pdb
+
+bond PROT.154.SG PROT.219.SG #disulfides bridges
+bond PROT.155.SG PROT.185.SG #disulfides bridges
+bond PROT.171.SG PROT.179.SG #disulfides bridges
+bond PROT.186.SG PROT.198.SG #disulfides bridges
+
+COM = combine {PROT MEMB IONS WAT}
+
+set COM box { 121.15200042724610, 121.385997772216795, 169.93900299072266 }
+
+addIonsRand COM Na+ 0
+addIonsRand COM Cl- 0 
+
+saveamberparm COM complex.prmtop complex.rst7
+savepdb COM complex.pdb
+quit
